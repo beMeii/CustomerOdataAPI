@@ -12,9 +12,9 @@ namespace CustomerOdataAPI.Controllers
         private static List<Order> orders = new List<Order>(
             Enumerable.Range(1, 3).Select(idx => new Order
             {
-                Id = idx,
-                Amount = rand.Next(1, 9) * 10
-                
+                OrderId = idx,
+                CreatedDate = DateTime.Now,
+
             }));
         [EnableQuery]
         public ActionResult<IEnumerable<Order>> Get()
@@ -25,7 +25,7 @@ namespace CustomerOdataAPI.Controllers
         [EnableQuery]
         public ActionResult<Order> Get([FromRoute] int key)
         {
-            var item = orders.SingleOrDefault(d => d.Id.Equals(key));
+            var item = orders.SingleOrDefault(d => d.OrderId.Equals(key));
 
             if (item == null)
             {

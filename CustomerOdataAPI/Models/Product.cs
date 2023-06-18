@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace CustomerOdataAPI.Models
 {
-    public partial class Order
+    public partial class Product
     {
-        public Order()
+        public Product()
         {
             OrderDetails = new HashSet<OrderDetail>();
         }
 
-        public int OrderId { get; set; }
-        public int CustomerId { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; } = null!;
+        public decimal Price { get; set; }
+        public int Stock { get; set; }
 
-        public virtual Customer Customer { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -4,6 +4,8 @@ using Microsoft.OData.ModelBuilder;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<EcommerceDbContext>();
+
 var modelBuilder = new ODataConventionModelBuilder();
 modelBuilder.EntityType<Order>();
 modelBuilder.EntitySet<Customer>("Customers");

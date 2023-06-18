@@ -1,11 +1,18 @@
-﻿namespace CustomerOdataAPI.Models
-{
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-    public class Customer
+namespace CustomerOdataAPI.Models
+{
+    public partial class Customer
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<Order> Orders { get; set; }
+        public Customer()
+        {
+            Orders = new HashSet<Order>();
+        }
+
+        public int CustomerId { get; set; }
+        public string Name { get; set; } = null!;
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
