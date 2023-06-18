@@ -1,3 +1,5 @@
+using AutoMapper;
+using CustomerOdataAPI.Extensions;
 using CustomerOdataAPI.Models;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
@@ -9,6 +11,9 @@ modelBuilder.EntityType<Order>();
 modelBuilder.EntitySet<Customer>("Customers");
 modelBuilder.EntitySet<Order>("Orders");
 
+var mapperConfig = new MapperConfiguration(mc => mc.AddProfile(new MappingProfile()));
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 // Add services to the container.
 
